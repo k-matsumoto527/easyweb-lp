@@ -166,6 +166,29 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .opt .op small{color:var(--muted); font-weight:700; font-size:11px}
 .tax-note{color:var(--muted); font-size:12px; text-align:center; margin-top:14px}
 
+/* 月額に含まれるもの */
+.included{background:var(--card); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); padding:24px 22px; margin-top:22px}
+.included .inc-ttl{text-align:center; font-weight:900; color:var(--navy); font-size:16px; margin-bottom:16px}
+.included .inc-ttl b{color:var(--accent-ink); background:var(--mk); border-radius:6px; padding:0 8px}
+.included ul{list-style:none; margin:0; padding:0; display:grid; gap:12px}
+@media(min-width:560px){ .included ul{grid-template-columns:1fr 1fr} }
+.included li{display:flex; align-items:flex-start; gap:10px; font-weight:700; font-size:14px}
+.included li svg{width:20px; height:20px; flex:0 0 auto; margin-top:2px; stroke:#fff; fill:none; stroke-width:3; stroke-linecap:round; stroke-linejoin:round; background:var(--sky); border-radius:50%; padding:3px}
+
+/* 他社との比較表 */
+.compare{margin-top:24px; border-radius:18px; overflow:hidden; border:1px solid var(--line); box-shadow:var(--shadow)}
+.cmp-row{display:grid; grid-template-columns:1fr 1fr 1.15fr}
+.cmp-row > div{padding:14px 8px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; font-size:13px; border-top:1px solid var(--line)}
+.cmp-row:first-child > div{border-top:none}
+.cmp-item{background:var(--wash2); font-weight:800; color:var(--navy); font-size:13px}
+.cmp-other{background:var(--card); color:var(--muted); font-weight:700}
+.cmp-us{background:#eaf3ea; color:var(--navy); font-weight:900}
+.cmp-us b{color:#1a8f3c; font-size:17px}
+.cmp-head .cmp-item{background:var(--navy); color:#fff}
+.cmp-head .cmp-other{background:#8894a5; color:#fff; font-weight:800; font-size:12px; line-height:1.3}
+.cmp-head .cmp-us{background:var(--navy); color:#fff; font-weight:900; font-size:14px; position:relative}
+.cmp-note{color:var(--muted); font-size:11px; text-align:center; margin-top:10px}
+
 /* 流れ */
 .steps{list-style:none; counter-reset:s; margin:0; padding:0}
 .steps li{counter-increment:s; position:relative; padding:0 0 30px 62px}
@@ -233,7 +256,8 @@ footer .logo span{color:var(--accent)}
   .feats{grid-template-columns:repeat(3,1fr)}
 
   /* 読み物・入力系は中央の読みやすい幅に制限（間延び防止） */
-  .about-box, .form, .faq, .steps, .opts, .plans{max-width:720px; margin-left:auto; margin-right:auto}
+  .about-box, .form, .faq, .steps, .opts, .plans, .included, .compare{max-width:720px; margin-left:auto; margin-right:auto}
+  .cmp-note{max-width:720px; margin-left:auto; margin-right:auto}
 
   /* PCでは下部固定CTAバーは不要（ヘッダーCTA＋各所ボタンで足りる） */
   .cta-bar{display:none}
@@ -367,6 +391,49 @@ footer .logo span{color:var(--accent)}
         <div class="p"><span class="n">9,800</span><span class="u">円/月（税別）</span></div>
       </div>
     </div>
+    <!-- 月額に含まれるもの -->
+    <div class="included">
+      <div class="inc-ttl">この料金に、<b>ぜんぶコミコミ</b></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>オリジナルデザイン制作</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>スマホ・タブレット対応</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>独自SSL（https化）</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>サーバー・保守管理</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>公開後の更新・修正</li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 6"/></svg>お問い合わせフォーム設置</li>
+      </ul>
+    </div>
+
+    <!-- 他社との比較 -->
+    <div class="compare">
+      <div class="cmp-row cmp-head">
+        <div class="cmp-item"></div>
+        <div class="cmp-other">一般的な<br>制作会社</div>
+        <div class="cmp-us">EasyWebCraft</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-item">初期費用</div>
+        <div class="cmp-other">20〜50万円</div>
+        <div class="cmp-us"><b>0円</b></div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-item">月額・保守</div>
+        <div class="cmp-other">別途 5,000円〜</div>
+        <div class="cmp-us">コミコミ</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-item">公開後の更新</div>
+        <div class="cmp-other">その都度 有料</div>
+        <div class="cmp-us">おまかせ</div>
+      </div>
+      <div class="cmp-row">
+        <div class="cmp-item">はじめやすさ</div>
+        <div class="cmp-other">まとまった<br>初期費用が必要</div>
+        <div class="cmp-us">月額だけで<br>スタート</div>
+      </div>
+    </div>
+    <p class="cmp-note">※「一般的な制作会社」は当社が想定する相場の目安です。</p>
+
     <div class="opts">
       <div class="opt"><div><div class="on">EasyWebLP</div><div class="oc">広告・キャンペーン用ページ</div></div><div class="op">7,700円<small>（税別）</small></div></div>
       <div class="opt"><div><div class="on">EasyWebSEO</div><div class="oc">検索対策の記事作成</div></div><div class="op">1,100円<small>/1記事（税別）</small></div></div>
