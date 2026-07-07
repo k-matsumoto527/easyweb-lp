@@ -48,7 +48,9 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .top-in{display:flex; justify-content:space-between; align-items:center; padding:13px 22px; max-width:720px; margin:0 auto}
 .top .logo{font-weight:800; color:#fff; font-size:18px; letter-spacing:.02em}
 .top .logo span{color:var(--accent)}
+.top-right{display:flex; align-items:center; gap:16px}
 .top a.tel{color:#fff; text-decoration:none; font-weight:800; font-size:13px; opacity:.92}
+.top-cta{display:none; background:var(--accent); color:var(--accent-ink); text-decoration:none; font-weight:900; font-size:14px; border-radius:999px; padding:9px 20px}
 
 /* ダークヒーロー */
 .hero{
@@ -196,6 +198,50 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 footer{background:var(--navy-deep); color:#9fb4d6; padding:42px 0 52px; text-align:center; font-size:12px}
 footer .logo{font-weight:800; color:#fff; font-size:17px; margin-bottom:6px}
 footer .logo span{color:var(--accent)}
+
+/* ============ PC / タブレット向け（営業ツール用のワイドレイアウト） ============ */
+@media (min-width: 960px){
+  body{padding-bottom:0}                 /* 下部固定バーを消すぶんの余白も不要に */
+  .wrap{max-width:1080px; padding:0 32px}
+  section{padding:96px 0}
+  h2{font-size:32px}
+  .lead{font-size:15px; margin-bottom:50px}
+  .eyebrow{font-size:12px}
+
+  /* ヘッダー: CTAボタン表示 */
+  .top-in{padding:15px 32px}
+  .top .logo{font-size:20px}
+  .top-cta{display:inline-block}
+
+  /* ヒーローを2カラム（左=コピー／右=モックアップ） */
+  .hero{padding:150px 0 96px; text-align:left}
+  .hero-grid{display:grid; grid-template-columns:1.04fr .96fr; gap:52px; align-items:center}
+  .hero-copy{max-width:540px}
+  .hero h1{font-size:48px; line-height:1.32}
+  .hero .kv-sub{font-size:16px}
+  .glass{margin:26px 0 0}                /* 左寄せ */
+  .zerocost .zc-val .z{font-size:96px}
+  .hero-badges{justify-content:flex-start; margin:22px 0 26px}
+  .hero-btn.btn-block{display:inline-block; width:auto; padding:17px 52px}
+  .hero .cta-cap{text-align:left}
+  .hero-visual{display:flex; justify-content:center}
+  .mock-zone{margin-top:0}
+  .phone{width:268px; transform:rotate(-2deg)}
+
+  /* グリッドを3カラムに */
+  .pains{grid-template-columns:repeat(3,1fr)}
+  .feats{grid-template-columns:repeat(3,1fr)}
+
+  /* 読み物・入力系は中央の読みやすい幅に制限（間延び防止） */
+  .about-box, .form, .faq, .steps, .opts, .plans{max-width:720px; margin-left:auto; margin-right:auto}
+
+  /* PCでは下部固定CTAバーは不要（ヘッダーCTA＋各所ボタンで足りる） */
+  .cta-bar{display:none}
+}
+@media (min-width: 960px) and (hover:hover){
+  .feat{transition:transform .18s ease, box-shadow .18s ease}
+  .feat:hover{transform:translateY(-4px); box-shadow:0 18px 40px rgba(13,58,125,.14)}
+}
 </style>
 </head>
 <body>
@@ -203,13 +249,17 @@ footer .logo span{color:var(--accent)}
 <div class="top">
   <div class="top-in">
     <div class="logo">EasyWeb<span>Craft</span></div>
-    <a class="tel" href="tel:0000000000">📞 000-0000-0000</a>
+    <div class="top-right">
+      <a class="tel" href="tel:0000000000">📞 000-0000-0000</a>
+      <a class="top-cta" href="#contact">無料相談</a>
+    </div>
   </div>
 </div>
 
 <!-- ダークヒーロー -->
 <div class="hero">
-  <div class="wrap">
+  <div class="wrap hero-grid">
+   <div class="hero-copy">
     <h1>ホームページ制作を<br><span class="yl">サブスク</span>で。</h1>
     <p class="kv-sub">制作も、更新も、保守もおまかせ。<br>小さなお店のためのサブスク型ホームページ</p>
     <div class="glass">
@@ -227,8 +277,10 @@ footer .logo span{color:var(--accent)}
       <span class="hbadge">スマホ対応</span>
       <span class="hbadge">更新・保守込み</span>
     </div>
-    <a class="btn btn-cta btn-block" href="#contact">無料で相談してみる</a>
+    <a class="btn btn-cta btn-block hero-btn" href="#contact">無料で相談してみる</a>
     <p class="cta-cap">相談・お見積りは無料。しつこい営業はいたしません。</p>
+   </div>
+   <div class="hero-visual">
     <div class="mock-zone">
       <div class="phone" aria-hidden="true">
         <div class="screen">
@@ -244,6 +296,7 @@ footer .logo span{color:var(--accent)}
       </div>
     </div>
     <p class="mock-cap">↑ こんな“ちゃんとした”ホームページが、あなたのお店にも。</p>
+   </div>
   </div>
 </div>
 
