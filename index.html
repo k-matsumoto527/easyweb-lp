@@ -67,9 +67,19 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
   border-radius:22px; margin:30px auto 0; max-width:430px; padding:24px 20px 18px; position:relative;
 }
 .glass .tag{position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--accent); color:var(--accent-ink); border-radius:999px; font-size:12px; font-weight:900; padding:4px 18px; white-space:nowrap}
-.glass .p{line-height:1; margin-top:8px}
-.glass .p .num{font-family:"Outfit",system-ui,sans-serif; font-size:clamp(58px,15vw,82px); font-weight:900; color:var(--accent); font-variant-numeric:tabular-nums; letter-spacing:-.03em}
-.glass .p .unit{font-size:19px; font-weight:900; color:#fff}
+/* 初期費用0円（主役の訴求） */
+.zerocost{margin-top:10px}
+.zerocost .zc-label{font-size:15px; font-weight:800; color:#fff; letter-spacing:.04em}
+.zerocost .zc-val{font-family:"Outfit",system-ui,sans-serif; line-height:.95; display:flex; justify-content:center; align-items:flex-start; gap:2px; margin-top:2px}
+.zerocost .zc-val .z{font-size:clamp(76px,21vw,116px); font-weight:800; color:var(--accent); letter-spacing:-.04em; text-shadow:0 6px 30px rgba(255,198,26,.35)}
+.zerocost .zc-val .y{font-size:28px; font-weight:900; color:#fff; margin-top:16px}
+.zerocost .zc-strike{color:var(--hero-sub); font-size:12px; margin-top:4px}
+.zerocost .zc-strike s{opacity:.85}
+.glass hr.div{border:none; border-top:1px dashed rgba(255,255,255,.22); margin:16px 0 12px}
+.glass .p{line-height:1; display:flex; justify-content:center; align-items:baseline; gap:4px}
+.glass .p .mo{font-size:14px; font-weight:800; color:#fff; margin-right:4px}
+.glass .p .num{font-family:"Outfit",system-ui,sans-serif; font-size:clamp(40px,11vw,58px); font-weight:800; color:#fff; font-variant-numeric:tabular-nums; letter-spacing:-.03em}
+.glass .p .unit{font-size:16px; font-weight:900; color:#fff}
 .glass .note{color:var(--hero-sub); font-size:12px; margin-top:8px}
 .hero-badges{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin:24px 0 28px}
 .hbadge{border:1px solid rgba(255,255,255,.3); color:#fff; font-size:12px; font-weight:700; border-radius:999px; padding:5px 15px; background:rgba(255,255,255,.05)}
@@ -203,8 +213,14 @@ footer .logo span{color:var(--accent)}
     <h1>ホームページ制作を、<br><span class="yl">月々のお支払いだけ</span>で。</h1>
     <p class="kv-sub">制作も、更新も、保守も。小さなお店・事業者さまのための<br>サブスク型ホームページサービス</p>
     <div class="glass">
-      <span class="tag">まとまった制作費は不要</span>
-      <div class="p"><span class="num">8,900</span><span class="unit">円/月〜</span></div>
+      <span class="tag">＼ 今こそ始めどき ／</span>
+      <div class="zerocost">
+        <div class="zc-label">初期費用</div>
+        <div class="zc-val"><span class="z">0</span><span class="y">円</span></div>
+        <div class="zc-strike">制作費 <s>数十万円</s> → <b style="color:#fff">0円</b>ではじめられる</div>
+      </div>
+      <hr class="div">
+      <div class="p"><span class="mo">月額</span><span class="num">8,900</span><span class="unit">円〜</span></div>
       <div class="note">（税別・EasyWebHPプラン／6ページまで）</div>
     </div>
     <div class="hero-badges">
