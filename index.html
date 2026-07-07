@@ -46,8 +46,8 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 /* ガラス風固定ヘッダー */
 .top{position:fixed; top:0; left:0; right:0; z-index:60; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); background:rgba(8,28,63,.68); border-bottom:1px solid rgba(255,255,255,.08)}
 .top-in{display:flex; justify-content:space-between; align-items:center; padding:13px 22px; max-width:720px; margin:0 auto}
-.top .logo{font-weight:800; color:#fff; font-size:18px; letter-spacing:.02em}
-.top .logo span{color:var(--accent)}
+.top .logo{display:inline-flex; align-items:center; line-height:0}
+.logo-img{height:28px; width:auto; display:block}
 .top-right{display:flex; align-items:center; gap:16px}
 .top a.tel{color:#fff; text-decoration:none; font-weight:800; font-size:13px; opacity:.92}
 .top-cta{display:none; background:var(--accent); color:var(--accent-ink); text-decoration:none; font-weight:900; font-size:14px; border-radius:999px; padding:9px 20px}
@@ -219,8 +219,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .cta-bar .btn{flex:1; padding:13px 8px; font-size:15px}
 
 footer{background:var(--navy-deep); color:#9fb4d6; padding:42px 0 52px; text-align:center; font-size:12px}
-footer .logo{font-weight:800; color:#fff; font-size:17px; margin-bottom:6px}
-footer .logo span{color:var(--accent)}
+.footer-logo-img{height:36px; width:auto; display:block; margin:0 auto 12px}
 
 /* ============ PC / タブレット向け（営業ツール用のワイドレイアウト） ============ */
 @media (min-width: 960px){
@@ -232,8 +231,8 @@ footer .logo span{color:var(--accent)}
   .eyebrow{font-size:12px}
 
   /* ヘッダー: CTAボタン表示 */
-  .top-in{padding:15px 32px}
-  .top .logo{font-size:20px}
+  .top-in{padding:14px 32px}
+  .logo-img{height:34px}
   .top-cta{display:inline-block}
 
   /* ヒーローを2カラム（左=コピー／右=モックアップ） */
@@ -270,9 +269,9 @@ footer .logo span{color:var(--accent)}
 </head>
 <body>
 <!-- 固定ヘッダー（ガラス風） -->
-<div class="top">
+<div class="top" id="top">
   <div class="top-in">
-    <div class="logo">EasyWeb<span>Craft</span></div>
+    <a class="logo" href="#top"><img class="logo-img" src="logo.png" alt="EasyWebCraft"></a>
     <div class="top-right">
       <a class="tel" href="tel:0000000000">📞 000-0000-0000</a>
       <a class="top-cta" href="#contact">無料相談</a>
@@ -510,7 +509,7 @@ footer .logo span{color:var(--accent)}
 </section>
 
 <footer>
-  <div class="logo">EasyWeb<span>Craft</span></div>
+  <img class="footer-logo-img" src="logo.png" alt="EasyWebCraft">
   <div>ホームページ制作・運用・保守サービス</div>
   <div>運営：〇〇〇〇（あなたの屋号）</div>
 </footer>
