@@ -4,9 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
-<title>EasyWeb｜月額8,900円〜のホームページ制作・運用・保守</title>
+<title>EasyWebCraft｜月額8,900円〜のホームページ制作・運用・保守</title>
 <style>
 /* ダークヒーロー型: ヒーロー=深紺グラデ×白×黄 / 以降=白ベース（広告LPのためライト固定の意匠） */
+/* フォント: 英字・数字=Outfit / 日本語=Zen Kaku Gothic New（読み込み失敗時はシステム書体へフォールバック） */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap');
 :root{
   --navy:#0d3a7d; --navy-deep:#081c3f; --ink:#1a2433; --muted:#5b6b7e;
   --paper:#ffffff; --wash:#eef4fb; --wash2:#f7fafd;
@@ -19,7 +21,7 @@
 html{scroll-behavior:smooth}
 body{
   margin:0; color:var(--ink); background:var(--paper);
-  font-family:"Noto Sans JP","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
+  font-family:"Zen Kaku Gothic New","Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,system-ui,sans-serif;
   line-height:1.9; font-size:16px;
   padding-bottom:78px;
 }
@@ -30,7 +32,7 @@ section{padding:64px 0}
 h1,h2,h3{line-height:1.4; text-wrap:balance; margin:0}
 h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin-bottom:10px; letter-spacing:.01em}
 .lead{color:var(--muted); text-align:center; margin:0 0 38px; font-size:14px}
-.eyebrow{display:block; text-align:center; color:var(--sky); font-size:11px; font-weight:800; letter-spacing:.28em; margin-bottom:10px}
+.eyebrow{font-family:"Outfit",system-ui,sans-serif; display:block; text-align:center; color:var(--sky); font-size:11px; font-weight:800; letter-spacing:.28em; margin-bottom:10px}
 .mk{background:linear-gradient(transparent 60%, var(--mk) 60%); font-weight:900; padding:0 2px}
 
 /* スクロール表示（reduced-motion時は無効） */
@@ -44,7 +46,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 /* ガラス風固定ヘッダー */
 .top{position:fixed; top:0; left:0; right:0; z-index:60; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); background:rgba(8,28,63,.68); border-bottom:1px solid rgba(255,255,255,.08)}
 .top-in{display:flex; justify-content:space-between; align-items:center; padding:13px 22px; max-width:720px; margin:0 auto}
-.top .logo{font-weight:900; color:#fff; font-size:18px; letter-spacing:.02em}
+.top .logo{font-family:"Outfit",system-ui,sans-serif; font-weight:800; color:#fff; font-size:18px; letter-spacing:.02em}
 .top .logo span{color:var(--accent)}
 .top a.tel{color:#fff; text-decoration:none; font-weight:800; font-size:13px; opacity:.92}
 
@@ -66,7 +68,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 }
 .glass .tag{position:absolute; top:-15px; left:50%; transform:translateX(-50%); background:var(--accent); color:var(--accent-ink); border-radius:999px; font-size:12px; font-weight:900; padding:4px 18px; white-space:nowrap}
 .glass .p{line-height:1; margin-top:8px}
-.glass .p .num{font-size:clamp(58px,15vw,82px); font-weight:900; color:var(--accent); font-variant-numeric:tabular-nums; letter-spacing:-.03em}
+.glass .p .num{font-family:"Outfit",system-ui,sans-serif; font-size:clamp(58px,15vw,82px); font-weight:900; color:var(--accent); font-variant-numeric:tabular-nums; letter-spacing:-.03em}
 .glass .p .unit{font-size:19px; font-weight:900; color:#fff}
 .glass .note{color:var(--hero-sub); font-size:12px; margin-top:8px}
 .hero-badges{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin:24px 0 28px}
@@ -142,7 +144,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .plan .name{font-weight:900; font-size:18px; color:var(--navy)}
 .plan .cap{color:var(--muted); font-size:13px; margin:2px 0 14px}
 .plan .p{font-variant-numeric:tabular-nums; line-height:1.1}
-.plan .p .n{font-size:40px; font-weight:900; color:var(--navy)}
+.plan .p .n{font-family:"Outfit",system-ui,sans-serif; font-size:40px; font-weight:900; color:var(--navy)}
 .plan .p .u{font-size:13px; color:var(--muted)}
 .opts{margin-top:20px; display:grid; gap:10px}
 .opt{display:flex; justify-content:space-between; align-items:center; gap:12px; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:13px 22px; box-shadow:var(--shadow)}
@@ -155,7 +157,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 /* 流れ */
 .steps{list-style:none; counter-reset:s; margin:0; padding:0}
 .steps li{counter-increment:s; position:relative; padding:0 0 30px 62px}
-.steps li::before{content:"STEP " counter(s); position:absolute; left:0; top:2px; background:var(--navy); color:#fff; font-weight:900; font-size:10px; letter-spacing:.05em; border-radius:9px; padding:6px 7px; width:46px; text-align:center}
+.steps li::before{content:"STEP " counter(s); position:absolute; left:0; top:2px; background:var(--navy); color:#fff; font-family:"Outfit",system-ui,sans-serif; font-weight:700; font-size:10px; letter-spacing:.05em; border-radius:9px; padding:6px 7px; width:46px; text-align:center}
 .steps li:not(:last-child)::after{content:""; position:absolute; left:22px; top:36px; bottom:6px; width:2px; background:var(--line)}
 .steps .t{font-weight:900; font-size:16px; color:var(--navy)}
 .steps p{margin:2px 0 0; color:var(--muted); font-size:13px}
@@ -182,7 +184,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .cta-bar .btn{flex:1; padding:13px 8px; font-size:15px}
 
 footer{background:var(--navy-deep); color:#9fb4d6; padding:42px 0 52px; text-align:center; font-size:12px}
-footer .logo{font-weight:900; color:#fff; font-size:17px; margin-bottom:6px}
+footer .logo{font-family:"Outfit",system-ui,sans-serif; font-weight:800; color:#fff; font-size:17px; margin-bottom:6px}
 footer .logo span{color:var(--accent)}
 </style>
 </head>
@@ -190,7 +192,7 @@ footer .logo span{color:var(--accent)}
 <!-- 固定ヘッダー（ガラス風） -->
 <div class="top">
   <div class="top-in">
-    <div class="logo">Easy<span>Web</span></div>
+    <div class="logo">EasyWeb<span>Craft</span></div>
     <a class="tel" href="tel:0000000000">📞 000-0000-0000</a>
   </div>
 </div>
@@ -235,7 +237,7 @@ footer .logo span{color:var(--accent)}
   <div class="wrap reveal">
     <span class="eyebrow">PROBLEM</span>
     <h2>こんなお悩み、ありませんか？</h2>
-    <p class="lead">ひとつでも当てはまったら、EasyWebにご相談ください。</p>
+    <p class="lead">ひとつでも当てはまったら、EasyWebCraftにご相談ください。</p>
     <ul class="pains">
       <li>ホームページがまだ無い</li>
       <li>あるけど古いまま放置している</li>
@@ -252,11 +254,11 @@ footer .logo span{color:var(--accent)}
 <section>
   <div class="wrap reveal">
     <span class="eyebrow">ABOUT</span>
-    <h2>EasyWebってなに？</h2>
+    <h2>EasyWebCraftってなに？</h2>
     <p class="lead">「かんたん・おまかせ・続けやすい」のサブスク型ホームページサービスです。</p>
     <div class="about-box">
       <div class="big">制作＋運用＋保守 ＝ ぜんぶ月額にコミコミ</div>
-      <p>ふつう、ホームページは「制作費ウン十万円＋保守は別料金」。EasyWebは発想を変えて、<b>制作から公開後のお世話までまるごと月額制</b>にしました。だから始めやすく、続けやすい。「作って終わり」ではなく、公開したあともお店のパートナーとして伴走します。</p>
+      <p>ふつう、ホームページは「制作費ウン十万円＋保守は別料金」。EasyWebCraftは発想を変えて、<b>制作から公開後のお世話までまるごと月額制</b>にしました。だから始めやすく、続けやすい。「作って終わり」ではなく、公開したあともお店のパートナーとして伴走します。</p>
     </div>
   </div>
 </section>
@@ -265,7 +267,7 @@ footer .logo span{color:var(--accent)}
 <section class="wash2">
   <div class="wrap reveal">
     <span class="eyebrow">FEATURES</span>
-    <h2>EasyWebの6つの特徴</h2>
+    <h2>EasyWebCraftの6つの特徴</h2>
     <p class="lead">小さなお店にちょうどいい、を追求しました。</p>
     <div class="feats">
       <div class="feat"><div class="ic"><svg viewBox="0 0 24 24"><path d="M6 3l6 7 6-7"/><path d="M12 10v11"/><path d="M7 14h10"/><path d="M7 18h10"/></svg></div><div class="t">まとまった制作費が不要</div><p>初期に数十万円は必要ありません。月々のお支払いだけでプロ品質のホームページを。</p></div>
@@ -352,7 +354,7 @@ footer .logo span{color:var(--accent)}
     <p class="lead">1営業日以内にご返信します。しつこい営業は一切いたしません。</p>
     <form class="form" id="cform">
       <label>お名前
-        <input type="text" name="name" required autocomplete="name" placeholder="例：松本 太郎">
+        <input type="text" name="name" required autocomplete="name" placeholder="例：山田 太郎">
       </label>
       <label>お店・会社名（任意）
         <input type="text" name="shop" autocomplete="organization" placeholder="例：カフェ イージー">
@@ -373,7 +375,7 @@ footer .logo span{color:var(--accent)}
 </section>
 
 <footer>
-  <div class="logo">Easy<span>Web</span></div>
+  <div class="logo">EasyWeb<span>Craft</span></div>
   <div>ホームページ制作・運用・保守サービス</div>
   <div>運営：〇〇〇〇（あなたの屋号）</div>
 </footer>
@@ -405,7 +407,7 @@ document.getElementById('cform').addEventListener('submit', function (e) {
            + 'ご連絡先: ' + f.contact.value + '\n\n'
            + (f.body.value || '');
   location.href = 'mailto:info@example.com?subject=' +
-    encodeURIComponent('【EasyWeb】無料相談の申し込み') +
+    encodeURIComponent('【EasyWebCraft】無料相談の申し込み') +
     '&body=' + encodeURIComponent(body);
 });
 </script>
