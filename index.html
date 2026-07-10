@@ -155,9 +155,9 @@ section{scroll-margin-top:64px}
 .work{background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
 .work .win{background:#e9eef5; padding:9px 12px; display:flex; gap:5px}
 .work .win i{width:8px; height:8px; border-radius:50%; background:#c6d2e2; display:block}
-.work .prev{position:relative; height:240px; overflow:hidden; background:#fff}
-.work .prev iframe{width:182%; height:364%; border:0; transform:scale(.55); transform-origin:0 0; pointer-events:none}
-.work .prev .cover{position:absolute; inset:0; z-index:2}
+.work .prev{position:relative; display:block; height:240px; overflow:hidden; background:#fff}
+.work .prev img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition:transform .3s ease}
+@media (hover:hover){ .work .prev:hover img{transform:scale(1.04)} }
 .work .wb{padding:14px 16px 18px; display:grid; gap:6px; justify-items:start}
 .work .wtag{background:var(--wash); color:var(--navy); font-size:11px; font-weight:800; border-radius:999px; padding:3px 12px}
 .work .wname{font-weight:900; font-size:15px; color:var(--navy)}
@@ -419,10 +419,9 @@ footer .logo span{color:var(--accent)}
     <div class="works">
       <div class="work">
         <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="prev">
-          <iframe src="https://k-matsumoto527.github.io/salon-sample/salon-sample.html" title="美容室サイトのサンプルプレビュー" loading="lazy" tabindex="-1"></iframe>
-          <a class="cover" href="https://k-matsumoto527.github.io/salon-sample/salon-sample.html" target="_blank" rel="noopener" aria-label="美容室のサンプルサイトを新しいタブで見る"></a>
-        </div>
+        <a class="prev" href="https://k-matsumoto527.github.io/salon-sample/salon-sample.html" target="_blank" rel="noopener" aria-label="美容室のサンプルサイトを新しいタブで見る">
+          <img src="img/salon.jpg" alt="美容室サイト hair salon TASHI の制作イメージ" width="2214" height="1323" loading="lazy">
+        </a>
         <div class="wb">
           <span class="wtag">美容室</span>
           <div class="wname">hair salon TASHI</div>
@@ -431,10 +430,9 @@ footer .logo span{color:var(--accent)}
       </div>
       <div class="work">
         <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="prev">
-          <iframe src="https://k-matsumoto527.github.io/my-website/" title="ダイニングサイトのサンプルプレビュー" loading="lazy" tabindex="-1"></iframe>
-          <a class="cover" href="https://k-matsumoto527.github.io/my-website/" target="_blank" rel="noopener" aria-label="ダイニングのサンプルサイトを新しいタブで見る"></a>
-        </div>
+        <a class="prev" href="https://k-matsumoto527.github.io/my-website/" target="_blank" rel="noopener" aria-label="ダイニングのサンプルサイトを新しいタブで見る">
+          <img src="img/dining.jpg" alt="飲食店サイト Dining TASHIRO の制作イメージ" width="2209" height="1314" loading="lazy">
+        </a>
         <div class="wb">
           <span class="wtag">飲食店</span>
           <div class="wname">Dining TASHIRO</div>
@@ -443,10 +441,9 @@ footer .logo span{color:var(--accent)}
       </div>
       <div class="work">
         <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
-        <div class="prev">
-          <iframe src="https://k-matsumoto527.github.io/kids-support-sample/" title="こども支援施設サイトのサンプルプレビュー" loading="lazy" tabindex="-1"></iframe>
-          <a class="cover" href="https://k-matsumoto527.github.io/kids-support-sample/" target="_blank" rel="noopener" aria-label="こども支援施設のサンプルサイトを新しいタブで見る"></a>
-        </div>
+        <a class="prev" href="https://k-matsumoto527.github.io/kids-support-sample/" target="_blank" rel="noopener" aria-label="こども支援施設のサンプルサイトを新しいタブで見る">
+          <img src="img/kids.jpg" alt="こども支援施設サイト 〇〇KIDS の制作イメージ" width="2167" height="1060" loading="lazy">
+        </a>
         <div class="wb">
           <span class="wtag">こども支援施設</span>
           <div class="wname">児童発達支援・放課後等デイ</div>
