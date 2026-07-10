@@ -57,6 +57,8 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1; transform:none; transition:none}
+  .faq details[open] .a{animation:none}
+  .faq summary::before, .faq details[open] summary::before{transition:none; transform:none}
 }
 
 /* ガラス風固定ヘッダー */
@@ -237,6 +239,11 @@ section{scroll-margin-top:64px}
 .faq summary::before{content:"Q"; color:#fff; background:var(--sky); border-radius:50%; width:24px; height:24px; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; font-size:13px; font-weight:900}
 .faq summary::-webkit-details-marker{display:none}
 .faq .a{padding:0 0 16px 34px; color:var(--muted); font-size:13px}
+/* 開いたとき回答がふわっと出る（reduced-motion時は無効・CSS下部のメディアクエリで） */
+.faq details[open] .a{animation:faqOpen .3s ease}
+.faq summary::before{transition:transform .25s ease, background .2s ease}
+.faq details[open] summary::before{transform:rotate(360deg); background:var(--navy)}
+@keyframes faqOpen{from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:none}}
 
 /* フォーム */
 .form{display:grid; gap:14px; background:var(--card); border:1px solid var(--line); border-radius:22px; padding:30px 24px; box-shadow:var(--shadow)}
@@ -468,7 +475,7 @@ footer .logo span{color:var(--accent)}
     <p class="lead">お店の規模とやりたいことに合わせて選べます。</p>
     <div class="plans">
       <div class="plan reco">
-        <span class="reco-tag">＼ いちばん人気 ／</span>
+        <span class="reco-tag">＼ おすすめ！ ／</span>
         <div class="name">EasyWebHP</div>
         <div class="cap">6ページまでのホームページ</div>
         <div class="p"><span class="n">8,900</span><span class="u">円/月（税別）</span></div>
@@ -649,6 +656,16 @@ footer .logo span{color:var(--accent)}
   btn.addEventListener('click', function () { setOpen(!menu.classList.contains('open')); });
   menu.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () { setOpen(false); });
+  });
+})();
+// FAQ: PC（マウス端末）はホバーで開閉。スマホ等タッチ端末は従来どおりタップ開閉。
+(function () {
+  if (!window.matchMedia || !matchMedia('(hover:hover)').matches) return;  // タッチ端末はそのまま
+  document.querySelectorAll('.faq details').forEach(function (d) {
+    d.addEventListener('mouseenter', function () { d.open = true; });
+    d.addEventListener('mouseleave', function () { d.open = false; });
+    var s = d.querySelector('summary');
+    if (s) s.addEventListener('click', function (e) { e.preventDefault(); });  // ホバー主導、クリック競合を防ぐ
   });
 })();
 // スクロールでふわっと表示（reduced-motionはCSS側で無効化済み）
