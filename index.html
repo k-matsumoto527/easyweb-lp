@@ -65,9 +65,12 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 
 /* ダークヒーロー */
 .hero{
+  /* 写真の上に半透明の紺グラデを重ねて文字の可読性を確保。最後のグラデは画像読込前のフォールバック */
   background:
-    radial-gradient(90% 60% at 85% 0%, rgba(63,142,207,.35) 0%, transparent 60%),
-    radial-gradient(70% 45% at 10% 100%, rgba(255,198,26,.14) 0%, transparent 55%),
+    radial-gradient(90% 60% at 85% 0%, rgba(63,142,207,.30) 0%, transparent 60%),
+    radial-gradient(70% 45% at 10% 100%, rgba(255,198,26,.12) 0%, transparent 55%),
+    linear-gradient(165deg, rgba(8,28,63,.88) 0%, rgba(12,47,102,.70) 55%, rgba(13,58,125,.82) 100%),
+    url('top.jpg') right center / cover no-repeat,
     linear-gradient(165deg, var(--navy-deep) 0%, #0c2f66 55%, var(--navy) 100%);
   color:var(--hero-text); text-align:center; padding:104px 0 64px; overflow:hidden;
 }
@@ -96,34 +99,6 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .glass .note{color:var(--hero-sub); font-size:12px; margin-top:8px}
 .hero-badges{display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin:24px 0 28px}
 .hbadge{border:1px solid rgba(255,255,255,.3); color:#fff; font-size:12px; font-weight:700; border-radius:999px; padding:5px 15px; background:rgba(255,255,255,.05)}
-
-/* スマホモックアップ（CSS描画のサンプルサイト） */
-.mock-zone{margin-top:44px; display:flex; justify-content:center}
-.phone{
-  width:216px; background:#0b1526; border-radius:34px; padding:10px;
-  border:1px solid rgba(255,255,255,.22);
-  box-shadow:0 24px 60px rgba(0,0,0,.45);
-  transform:rotate(-3deg);
-}
-.screen{background:#fff; border-radius:26px; overflow:hidden; text-align:left}
-.s-nav{display:flex; align-items:center; justify-content:space-between; padding:9px 12px}
-.s-logo{width:52px; height:8px; border-radius:4px; background:var(--navy)}
-.s-menu{display:flex; gap:3px}
-.s-menu i{width:14px; height:2px; background:#c6d2e2; border-radius:2px; display:block}
-.s-menu{flex-direction:column}
-.s-hero{height:96px; background:linear-gradient(135deg,#f2b06b 0%,#d97742 55%,#8a4b2d 100%); position:relative}
-.s-hero::after{content:""; position:absolute; left:12px; bottom:10px; width:90px; height:8px; border-radius:4px; background:rgba(255,255,255,.9)}
-.s-hero::before{content:""; position:absolute; left:12px; bottom:24px; width:60px; height:8px; border-radius:4px; background:rgba(255,255,255,.9)}
-.s-body{padding:12px}
-.s-line{height:6px; border-radius:3px; background:#dfe7f0; margin-bottom:6px}
-.s-line.w60{width:60%}
-.s-cards{display:flex; gap:8px; margin:10px 0}
-.s-card{flex:1; height:52px; border-radius:8px}
-.s-card:first-child{background:linear-gradient(135deg,#9fc4e8,#5d92c4)}
-.s-card:last-child{background:linear-gradient(135deg,#e8cf9f,#c4a25d)}
-.s-cta{height:26px; border-radius:999px; background:var(--navy); margin:4px 0 10px; position:relative}
-.s-cta::after{content:""; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:64px; height:6px; border-radius:3px; background:rgba(255,255,255,.85)}
-.mock-cap{color:var(--hero-sub); font-size:11px; margin-top:14px}
 
 /* ボタン */
 .btn{display:inline-block; text-decoration:none; text-align:center; font-weight:900; border-radius:999px; padding:17px 36px; font-size:16px; transition:transform .12s, box-shadow .2s, opacity .15s; border:none; cursor:pointer; font-family:inherit; letter-spacing:.02em}
@@ -264,8 +239,16 @@ footer .logo span{color:var(--accent)}
   .top .logo{font-size:20px}
   .top-cta{display:inline-block}
 
-  /* ヒーローを2カラム（左=コピー／右=モックアップ） */
-  .hero{padding:150px 0 96px; text-align:left}
+  /* ヒーロー: 左=コピー／右=背景写真のスクリーン群を見せる */
+  .hero{
+    padding:150px 0 96px; text-align:left;
+    /* PCは右側に文字が無いので、右へ行くほどオーバーレイを薄くして写真を見せる */
+    background:
+      radial-gradient(70% 45% at 10% 100%, rgba(255,198,26,.12) 0%, transparent 55%),
+      linear-gradient(100deg, rgba(8,28,63,.94) 0%, rgba(10,38,84,.82) 46%, rgba(13,58,125,.30) 100%),
+      url('top.jpg') right center / cover no-repeat,
+      linear-gradient(165deg, var(--navy-deep) 0%, #0c2f66 55%, var(--navy) 100%);
+  }
   .hero-grid{display:grid; grid-template-columns:1.04fr .96fr; gap:52px; align-items:center}
   .hero-copy{max-width:540px}
   .hero h1{font-size:48px; line-height:1.32}
@@ -275,9 +258,6 @@ footer .logo span{color:var(--accent)}
   .hero-badges{justify-content:flex-start; margin:22px 0 26px}
   .hero-btn.btn-block{display:inline-block; width:auto; padding:17px 52px}
   .hero .cta-cap{text-align:left}
-  .hero-visual{display:flex; justify-content:center}
-  .mock-zone{margin-top:0}
-  .phone{width:268px; transform:rotate(-2deg)}
 
   /* グリッドを3カラムに */
   .pains{grid-template-columns:repeat(3,1fr)}
@@ -331,23 +311,6 @@ footer .logo span{color:var(--accent)}
     </div>
     <a class="btn btn-cta btn-block hero-btn" href="#contact">無料で相談してみる</a>
     <p class="cta-cap">相談・お見積りは無料。しつこい営業はいたしません。</p>
-   </div>
-   <div class="hero-visual">
-    <div class="mock-zone">
-      <div class="phone" aria-hidden="true">
-        <div class="screen">
-          <div class="s-nav"><div class="s-logo"></div><div class="s-menu"><i></i><i></i><i></i></div></div>
-          <div class="s-hero"></div>
-          <div class="s-body">
-            <div class="s-line"></div>
-            <div class="s-line w60"></div>
-            <div class="s-cards"><div class="s-card"></div><div class="s-card"></div></div>
-            <div class="s-cta"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <p class="mock-cap">↑ こんな“ちゃんとした”ホームページが、あなたのお店にも。</p>
    </div>
   </div>
 </div>
