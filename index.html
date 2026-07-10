@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>EasyWebCraft｜月額8,900円〜のホームページ制作・運用・保守</title>
-<meta name="description" content="初期費用0円・月額8,900円〜。制作も更新も保守もぜんぶコミコミの、小さなお店のためのサブスク型ホームページ制作サービス。">
+<meta name="description" content="初期費用0円・月額8,900円〜。制作も更新も保守もぜんぶコミコミの、すぐはじめたい人のためのサブスク型ホームページ制作サービス。">
 <!-- OGP（LINE・SNSでURLを共有したときのプレビュー用） -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="EasyWebCraft">
 <meta property="og:title" content="EasyWebCraft｜初期費用0円・月額8,900円〜のホームページ制作">
-<meta property="og:description" content="制作も、更新も、保守もおまかせ。小さなお店のためのサブスク型ホームページ。相談・お見積りは無料です。">
+<meta property="og:description" content="制作も、更新も、保守もおまかせ。すぐはじめたい人のためのサブスク型ホームページ制作。相談・お見積りは無料です。">
 <meta property="og:url" content="https://k-matsumoto527.github.io/easyweb-lp/">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230d3a7d'/><text x='50' y='72' font-size='62' font-weight='bold' text-anchor='middle' font-family='sans-serif' fill='%23ffc61a'>E</text></svg>">
@@ -56,21 +56,37 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 
 /* ガラス風固定ヘッダー */
 .top{position:fixed; top:0; left:0; right:0; z-index:60; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); background:rgba(8,28,63,.68); border-bottom:1px solid rgba(255,255,255,.08)}
-.top-in{display:flex; justify-content:space-between; align-items:center; padding:13px 22px; max-width:720px; margin:0 auto}
+.top-in{display:flex; justify-content:space-between; align-items:center; padding:13px 22px}
 .top .logo{font-weight:800; color:#fff; font-size:18px; letter-spacing:.02em}
 .top .logo span{color:var(--accent)}
 .top-right{display:flex; align-items:center; gap:16px}
 .top a.tel{color:#fff; text-decoration:none; font-weight:800; font-size:13px; opacity:.92}
 .top-cta{display:none; background:var(--accent); color:var(--accent-ink); text-decoration:none; font-weight:900; font-size:14px; border-radius:999px; padding:9px 20px}
 
+/* グローバルナビ（PC=横並び／スマホ=ハンバーガー＋フルスクリーン） */
+.gnav{display:none}
+.nav-toggle{display:flex; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px 4px}
+.nav-toggle span{display:block; width:22px; height:2px; background:#fff; border-radius:2px; transition:transform .25s, opacity .25s}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-toggle.open span:nth-child(2){opacity:0}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav{position:fixed; inset:0; background:rgba(8,28,63,.96); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:55; display:none; flex-direction:column; align-items:center; justify-content:center; gap:26px}
+.mnav.open{display:flex}
+.mnav a{color:#fff; text-decoration:none; font-size:18px; font-weight:800; letter-spacing:.08em}
+.mnav .mnav-cta{background:var(--accent); color:var(--accent-ink); border-radius:999px; padding:12px 40px; margin-top:8px}
+/* 固定ヘッダーの高さぶん、アンカー着地位置を下げる */
+section{scroll-margin-top:64px}
+
 /* ダークヒーロー */
 .hero{
-  /* 写真の上に半透明の紺グラデを重ねて文字の可読性を確保。最後のグラデは画像読込前のフォールバック */
+  /* 写真の上に紺のオーバーレイを重ねて文字の可読性を確保。最後のグラデは画像読込前のフォールバック
+     ・中央の文字/価格カードの背後を濃く沈める放射グラデ
+     ・全体を覆う濃いめの紺グラデ で二重に暗く */
   background:
-    radial-gradient(90% 60% at 85% 0%, rgba(63,142,207,.30) 0%, transparent 60%),
-    radial-gradient(70% 45% at 10% 100%, rgba(255,198,26,.12) 0%, transparent 55%),
-    linear-gradient(165deg, rgba(8,28,63,.88) 0%, rgba(12,47,102,.70) 55%, rgba(13,58,125,.82) 100%),
-    url('top.jpg') right center / cover no-repeat,
+    radial-gradient(70% 65% at 50% 44%, rgba(6,20,46,.55) 0%, rgba(6,20,46,.20) 55%, transparent 78%),
+    radial-gradient(70% 45% at 10% 100%, rgba(255,198,26,.10) 0%, transparent 55%),
+    linear-gradient(165deg, rgba(6,22,50,.72) 0%, rgba(9,34,74,.55) 55%, rgba(11,45,98,.70) 100%),
+    url('top.jpg') center / cover no-repeat,
     linear-gradient(165deg, var(--navy-deep) 0%, #0c2f66 55%, var(--navy) 100%);
   color:var(--hero-text); text-align:center; padding:104px 0 64px; overflow:hidden;
 }
@@ -200,6 +216,15 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .steps .t{font-weight:900; font-size:16px; color:var(--navy)}
 .steps p{margin:2px 0 0; color:var(--muted); font-size:13px}
 
+/* 運営メンバー */
+.members{display:grid; gap:14px}
+@media(min-width:640px){ .members{grid-template-columns:1fr 1fr} }
+.member{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px 22px; box-shadow:var(--shadow); text-align:center}
+.member .avatar{width:64px; height:64px; border-radius:50%; background:var(--navy); color:#fff; font-weight:900; display:flex; align-items:center; justify-content:center; margin:0 auto 12px; font-size:16px; letter-spacing:.04em}
+.member .m-role{color:var(--sky); font-size:11px; font-weight:800; letter-spacing:.12em}
+.member .m-name{font-weight:900; font-size:17px; color:var(--navy); margin:2px 0 10px}
+.member p{margin:0; color:var(--muted); font-size:13px; text-align:left}
+
 /* FAQ */
 .faq{display:grid; gap:10px}
 .faq details{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:0 18px; box-shadow:var(--shadow)}
@@ -213,6 +238,8 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .form label{font-weight:800; font-size:14px; display:grid; gap:6px; color:var(--navy)}
 .form input,.form textarea{width:100%; border:1px solid var(--line); border-radius:12px; padding:13px; font-size:16px; font-family:inherit; background:#fff; color:var(--ink)}
 .form input:focus-visible,.form textarea:focus-visible{outline:3px solid var(--sky); outline-offset:1px}
+.form-sent{margin:8px 0; text-align:center; font-weight:800; color:var(--navy); font-size:15px}
+.form-err{margin:0; text-align:center; color:var(--danger); font-size:13px; font-weight:700}
 .alt-contact{display:grid; gap:12px; margin-top:26px; text-align:center}
 .alt-contact a{color:var(--navy); font-weight:900; text-decoration:none; font-size:18px}
 .alt-contact .cap{color:var(--muted); font-size:12px}
@@ -234,37 +261,36 @@ footer .logo span{color:var(--accent)}
   .lead{font-size:15px; margin-bottom:50px}
   .eyebrow{font-size:12px}
 
-  /* ヘッダー: CTAボタン表示 */
+  /* ヘッダー: ナビ＋CTAボタン表示、ハンバーガーは隠す */
   .top-in{padding:15px 32px}
   .top .logo{font-size:20px}
   .top-cta{display:inline-block}
+  .gnav{display:flex; gap:24px; align-items:center; margin-left:auto; margin-right:24px}
+  .gnav a{color:#fff; text-decoration:none; font-size:13px; font-weight:700; opacity:.85; transition:opacity .15s, color .15s}
+  .gnav a:hover{opacity:1; color:var(--accent)}
+  .nav-toggle{display:none}
+  section{scroll-margin-top:72px}
 
-  /* ヒーロー: 左=コピー／右=背景写真のスクリーン群を見せる */
-  .hero{
-    padding:150px 0 96px; text-align:left;
-    /* PCは右側に文字が無いので、右へ行くほどオーバーレイを薄くして写真を見せる */
-    background:
-      radial-gradient(70% 45% at 10% 100%, rgba(255,198,26,.12) 0%, transparent 55%),
-      linear-gradient(100deg, rgba(8,28,63,.94) 0%, rgba(10,38,84,.82) 46%, rgba(13,58,125,.30) 100%),
-      url('top.jpg') right center / cover no-repeat,
-      linear-gradient(165deg, var(--navy-deep) 0%, #0c2f66 55%, var(--navy) 100%);
-  }
-  .hero-grid{display:grid; grid-template-columns:1.04fr .96fr; gap:52px; align-items:center}
-  .hero-copy{max-width:540px}
+  /* ヒーロー: 全要素を中央揃え（背景はモバイルと同じ一様オーバーレイを継承） */
+  .hero{padding:150px 0 96px}
+  /* キャッチコピー・価格カード・CTA すべて中央揃え。
+     スマホはDOM順（コピー→価格→CTA）のまま縦積みになる */
+  .hero-copy{max-width:none; text-align:center; margin:0 auto 44px}
+  .hero-price{display:flex; justify-content:center}
+  .hero-price .glass{margin:0; width:100%; max-width:430px; text-align:center}
+  .hero-actions{width:100%; max-width:430px; margin:0 auto; text-align:center}
   .hero h1{font-size:48px; line-height:1.32}
   .hero .kv-sub{font-size:16px}
-  .glass{margin:26px 0 0}                /* 左寄せ */
   .zerocost .zc-val .z{font-size:96px}
-  .hero-badges{justify-content:flex-start; margin:22px 0 26px}
-  .hero-btn.btn-block{display:inline-block; width:auto; padding:17px 52px}
-  .hero .cta-cap{text-align:left}
+  .hero-badges{justify-content:center; margin:20px 0 20px}
+  .hero .cta-cap{text-align:center}
 
   /* グリッドを3カラムに */
   .pains{grid-template-columns:repeat(3,1fr)}
   .feats{grid-template-columns:repeat(3,1fr)}
 
   /* 読み物・入力系は中央の読みやすい幅に制限（間延び防止） */
-  .about-box, .form, .faq, .steps, .opts, .plans, .included, .compare{max-width:720px; margin-left:auto; margin-right:auto}
+  .about-box, .form, .faq, .steps, .opts, .plans, .included, .compare, .members{max-width:720px; margin-left:auto; margin-right:auto}
   .cmp-note{max-width:720px; margin-left:auto; margin-right:auto}
 
   /* PCでは下部固定CTAバーは不要（ヘッダーCTA＋各所ボタンで足りる） */
@@ -281,19 +307,38 @@ footer .logo span{color:var(--accent)}
 <div class="top">
   <div class="top-in">
     <div class="logo">EasyWeb<span>Craft</span></div>
+    <nav class="gnav" aria-label="ページ内メニュー">
+      <a href="#features">特徴</a>
+      <a href="#works">制作サンプル</a>
+      <a href="#plans">料金</a>
+      <a href="#flow">流れ</a>
+      <a href="#faq">FAQ</a>
+    </nav>
     <div class="top-right">
       <a class="tel" href="tel:0000000000">📞 000-0000-0000</a>
       <a class="top-cta" href="#contact">無料相談</a>
+      <button type="button" class="nav-toggle" id="nav-toggle" aria-label="メニュー" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
 </div>
+<!-- スマホ用フルスクリーンメニュー -->
+<nav class="mnav" id="mnav" aria-label="メニュー">
+  <a href="#features">特徴</a>
+  <a href="#works">制作サンプル</a>
+  <a href="#plans">料金</a>
+  <a href="#flow">流れ</a>
+  <a href="#faq">FAQ</a>
+  <a class="mnav-cta" href="#contact">無料相談</a>
+</nav>
 
 <!-- ダークヒーロー -->
 <div class="hero">
-  <div class="wrap hero-grid">
+  <div class="wrap">
    <div class="hero-copy">
-    <h1>ホームページ制作を<br><span class="yl">サブスク</span>で。</h1>
-    <p class="kv-sub">制作も、更新も、保守もおまかせ。<br>小さなお店のためのサブスク型ホームページ</p>
+    <h1>ホームページ制作を<span class="yl">サブスク</span>で。</h1>
+    <p class="kv-sub">制作も、更新も、保守もおまかせ。すぐはじめたい人のためのサブスク型ホームページ</p>
+   </div>
+   <div class="hero-price">
     <div class="glass">
       <div class="zerocost">
         <div class="zc-label">初期費用</div>
@@ -304,6 +349,8 @@ footer .logo span{color:var(--accent)}
       <div class="p"><span class="mo">月額</span><span class="num">8,900</span><span class="unit">円〜</span></div>
       <div class="note">（税別／税込9,790円・EasyWebHPプラン／6ページまで）</div>
     </div>
+   </div>
+   <div class="hero-actions">
     <div class="hero-badges">
       <span class="hbadge">月額制</span>
       <span class="hbadge">スマホ対応</span>
@@ -347,7 +394,7 @@ footer .logo span{color:var(--accent)}
 </section>
 
 <!-- 特徴6つ -->
-<section class="wash2">
+<section class="wash2" id="features">
   <div class="wrap reveal">
     <span class="eyebrow">FEATURES</span>
     <h2>EasyWebCraftの6つの特徴</h2>
@@ -364,7 +411,7 @@ footer .logo span{color:var(--accent)}
 </section>
 
 <!-- 制作サンプル -->
-<section>
+<section id="works">
   <div class="wrap reveal">
     <span class="eyebrow">WORKS</span>
     <h2>制作イメージを実際に見る</h2>
@@ -385,13 +432,13 @@ footer .logo span{color:var(--accent)}
       <div class="work">
         <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
         <div class="prev">
-          <iframe src="https://k-matsumoto527.github.io/izakaya-sample/" title="居酒屋サイトのサンプルプレビュー" loading="lazy" tabindex="-1"></iframe>
-          <a class="cover" href="https://k-matsumoto527.github.io/izakaya-sample/" target="_blank" rel="noopener" aria-label="居酒屋のサンプルサイトを新しいタブで見る"></a>
+          <iframe src="https://k-matsumoto527.github.io/my-website/" title="ダイニングサイトのサンプルプレビュー" loading="lazy" tabindex="-1"></iframe>
+          <a class="cover" href="https://k-matsumoto527.github.io/my-website/" target="_blank" rel="noopener" aria-label="ダイニングのサンプルサイトを新しいタブで見る"></a>
         </div>
         <div class="wb">
-          <span class="wtag">居酒屋</span>
-          <div class="wname">居酒屋 燈</div>
-          <a class="visit" href="https://k-matsumoto527.github.io/izakaya-sample/" target="_blank" rel="noopener">サイトを実際に見てみる →</a>
+          <span class="wtag">飲食店</span>
+          <div class="wname">Dining TASHIRO</div>
+          <a class="visit" href="https://k-matsumoto527.github.io/my-website/" target="_blank" rel="noopener">サイトを実際に見てみる →</a>
         </div>
       </div>
       <div class="work">
@@ -488,7 +535,7 @@ footer .logo span{color:var(--accent)}
 </section>
 
 <!-- 流れ -->
-<section>
+<section id="flow">
   <div class="wrap reveal">
     <span class="eyebrow">FLOW</span>
     <h2>公開までの流れ</h2>
@@ -504,8 +551,31 @@ footer .logo span{color:var(--accent)}
   </div>
 </section>
 
+<!-- 運営メンバー -->
+<section class="wash">
+  <div class="wrap reveal">
+    <span class="eyebrow">TEAM</span>
+    <h2>私たちが担当します</h2>
+    <p class="lead">顔の見える2人体制。制作から公開後のお世話まで、責任をもって伴走します。</p>
+    <div class="members">
+      <div class="member">
+        <div class="avatar" aria-hidden="true">Y.T</div>
+        <div class="m-role">営業担当 / Sales</div>
+        <div class="m-name">Y.T</div>
+        <p>お問い合わせの窓口からヒアリング、ご提案までを担当します。「ホームページは欲しいけれど、何から始めればいいか分からない」——そんな段階からでも、お店の想いやご要望を丁寧にお聞きし、最適なプランをご提案します。料金や進め方など、些細なことでもお気軽にご相談ください。</p>
+      </div>
+      <div class="member">
+        <div class="avatar" aria-hidden="true">K.M</div>
+        <div class="m-role">制作担当 / Designer</div>
+        <div class="m-name">K.M</div>
+        <p>デザインからコーディング、公開後のサポートまでを担当します。岐阜・愛知を拠点に、低コスト・短納期で“ちゃんと伝わる”サイトづくりを大切にしています。お店の雰囲気や魅力がそのまま伝わるデザインをご提案し、公開後の更新まで長くお付き合いします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
-<section class="wash2">
+<section class="wash2" id="faq">
   <div class="wrap reveal">
     <span class="eyebrow">FAQ</span>
     <h2>よくあるご質問</h2>
@@ -528,7 +598,8 @@ footer .logo span{color:var(--accent)}
     <span class="eyebrow">CONTACT</span>
     <h2>無料相談・お問い合わせ</h2>
     <p class="lead">1営業日以内にご返信します。しつこい営業は一切いたしません。</p>
-    <form class="form" id="cform">
+    <form class="form" id="cform" action="https://formspree.io/f/maqkzjek" method="POST">
+      <input type="hidden" name="_subject" value="【EasyWebCraft LP】無料相談の申し込み">
       <label>お名前
         <input type="text" name="name" required autocomplete="name" placeholder="例：山田 太郎">
       </label>
@@ -542,6 +613,7 @@ footer .logo span{color:var(--accent)}
         <textarea name="body" rows="4" placeholder="例：お店のホームページを作りたい。料金の詳細を知りたい。"></textarea>
       </label>
       <button class="btn btn-cta btn-block" type="submit">この内容で無料相談する</button>
+      <p class="form-err" id="form-err" hidden>送信できませんでした。お手数ですが、時間をおいて再度お試しいただくか、お電話・メールでご連絡ください。</p>
     </form>
     <div class="alt-contact">
       <div><a href="tel:0000000000">📞 000-0000-0000</a><div class="cap">お電話でのご相談（受付時間 00:00〜00:00）</div></div>
@@ -563,6 +635,20 @@ footer .logo span{color:var(--accent)}
 </div>
 
 <script>
+// ハンバーガーメニューの開閉（リンククリックで閉じる）
+(function () {
+  var btn = document.getElementById('nav-toggle');
+  var menu = document.getElementById('mnav');
+  function setOpen(open) {
+    btn.classList.toggle('open', open);
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  btn.addEventListener('click', function () { setOpen(!menu.classList.contains('open')); });
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { setOpen(false); });
+  });
+})();
 // スクロールでふわっと表示（reduced-motionはCSS側で無効化済み）
 (function () {
   var els = document.querySelectorAll('.reveal');
@@ -574,17 +660,28 @@ footer .logo span{color:var(--accent)}
   }, { threshold: .12 });
   els.forEach(function (e) { io.observe(e); });
 })();
-// フォーム送信 → メール作成画面を開く（本公開時はフォーム送信サービスに差し替え）
+// フォーム送信 → Formspree へAJAX送信（成功したらフォームをお礼メッセージに置き換え。
+// JS無効時は通常のPOSTで Formspree の完了ページへ遷移するフォールバック）
 document.getElementById('cform').addEventListener('submit', function (e) {
   e.preventDefault();
   var f = e.target;
-  var body = 'お名前: ' + f.name.value + '\n'
-           + 'お店・会社名: ' + (f.shop.value || '-') + '\n'
-           + 'ご連絡先: ' + f.contact.value + '\n\n'
-           + (f.body.value || '');
-  location.href = 'mailto:info@example.com?subject=' +
-    encodeURIComponent('【EasyWebCraft】無料相談の申し込み') +
-    '&body=' + encodeURIComponent(body);
+  var btn = f.querySelector('button[type="submit"]');
+  var err = document.getElementById('form-err');
+  err.hidden = true;
+  btn.disabled = true;
+  btn.textContent = '送信中…';
+  fetch(f.action, {
+    method: 'POST',
+    body: new FormData(f),
+    headers: { 'Accept': 'application/json' }
+  }).then(function (res) {
+    if (!res.ok) throw new Error('send failed');
+    f.innerHTML = '<p class="form-sent">送信しました。お問い合わせありがとうございます。<br>1営業日以内にご連絡いたします。</p>';
+  }).catch(function () {
+    btn.disabled = false;
+    btn.textContent = 'この内容で無料相談する';
+    err.hidden = false;
+  });
 });
 </script>
 </body>
