@@ -71,7 +71,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 /* ガラス風固定ヘッダー */
 .top{position:fixed; top:0; left:0; right:0; z-index:60; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); background:rgba(8,28,63,.68); border-bottom:1px solid rgba(255,255,255,.08)}
 .top-in{display:flex; justify-content:space-between; align-items:center; padding:13px 22px}
-.top .logo{font-weight:800; color:#fff; font-size:18px; letter-spacing:.02em}
+.top .logo{font-weight:800; color:#fff; font-size:18px; letter-spacing:.02em; text-decoration:none; cursor:pointer}
 .top .logo span{color:var(--accent)}
 .top-right{display:flex; align-items:center; gap:16px}
 .top a.tel{color:#fff; text-decoration:none; font-weight:800; font-size:13px; opacity:.92}
@@ -338,7 +338,7 @@ footer .logo span{color:var(--accent)}
 <!-- 固定ヘッダー（ガラス風） -->
 <div class="top">
   <div class="top-in">
-    <div class="logo">EasyWeb<span>Craft</span></div>
+    <a class="logo" href="#top" aria-label="トップへ戻る">EasyWeb<span>Craft</span></a>
     <nav class="gnav" aria-label="ページ内メニュー">
       <a href="#features">特徴</a>
       <a href="#works">制作サンプル</a>
