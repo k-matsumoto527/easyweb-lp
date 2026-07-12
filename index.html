@@ -64,6 +64,8 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
   .reveal{opacity:1; transform:none; transition:none}
   .faq details[open] .a{animation:none}
   .faq summary::before, .faq details[open] summary::before{transition:none; transform:none}
+  .mnav, .mnav-scrim{transition:none}
+  .mnav{transform:none}
 }
 
 /* ガラス風固定ヘッダー */
@@ -82,10 +84,23 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 .nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-toggle.open span:nth-child(2){opacity:0}
 .nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.mnav{position:fixed; inset:0; background:rgba(8,28,63,.96); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); z-index:55; display:none; flex-direction:column; align-items:center; justify-content:center; gap:26px}
-.mnav.open{display:flex}
-.mnav a{color:#fff; text-decoration:none; font-size:18px; font-weight:800; letter-spacing:.08em}
-.mnav .mnav-cta{background:var(--accent); color:var(--accent-ink); border-radius:999px; padding:12px 40px; margin-top:8px}
+/* スマホメニュー: ヘッダー右下から降りてくるドロップダウンパネル。
+   全画面を覆わずトップ画面に重ねて表示（背後の画面が見えたままになる） */
+.mnav-scrim{position:fixed; inset:0; z-index:57; background:rgba(4,14,32,.18); opacity:0; visibility:hidden; transition:opacity .18s ease, visibility .18s}
+.mnav-scrim.open{opacity:1; visibility:visible}
+.mnav{
+  position:fixed; top:56px; right:14px; z-index:58;
+  width:min(230px, calc(100vw - 28px));
+  background:rgba(10,30,66,.94); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.14); border-radius:16px; box-shadow:0 18px 40px rgba(0,0,0,.38);
+  padding:10px; display:flex; flex-direction:column; align-items:stretch; gap:2px;
+  opacity:0; transform:translateY(-8px) scale(.98); transform-origin:top right; visibility:hidden; pointer-events:none;
+  transition:opacity .18s ease, transform .18s ease, visibility .18s;
+}
+.mnav.open{opacity:1; transform:none; visibility:visible; pointer-events:auto}
+.mnav a{color:#fff; text-decoration:none; font-size:15px; font-weight:700; letter-spacing:.04em; padding:11px 14px; border-radius:10px}
+.mnav a:active{background:rgba(255,255,255,.08)}
+.mnav .mnav-cta{background:var(--accent); color:var(--accent-ink); font-weight:900; text-align:center; margin-top:6px; padding:12px 14px}
 /* 固定ヘッダーの高さぶん、アンカー着地位置を下げる */
 section{scroll-margin-top:64px}
 
@@ -338,7 +353,8 @@ footer .logo span{color:var(--accent)}
     </div>
   </div>
 </div>
-<!-- スマホ用フルスクリーンメニュー -->
+<!-- スマホ用ドロップダウンメニュー（トップ画面に重ねて表示） -->
+<div class="mnav-scrim" id="mnav-scrim"></div>
 <nav class="mnav" id="mnav" aria-label="メニュー">
   <a href="#features">特徴</a>
   <a href="#works">制作サンプル</a>
@@ -653,12 +669,16 @@ footer .logo span{color:var(--accent)}
 (function () {
   var btn = document.getElementById('nav-toggle');
   var menu = document.getElementById('mnav');
+  var scrim = document.getElementById('mnav-scrim');
   function setOpen(open) {
     btn.classList.toggle('open', open);
     menu.classList.toggle('open', open);
+    scrim.classList.toggle('open', open);
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
   btn.addEventListener('click', function () { setOpen(!menu.classList.contains('open')); });
+  scrim.addEventListener('click', function () { setOpen(false); });  // 背後（トップ画面）をタップで閉じる
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
   menu.querySelectorAll('a').forEach(function (a) {
     a.addEventListener('click', function () { setOpen(false); });
   });
