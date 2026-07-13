@@ -62,8 +62,8 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1; transform:none; transition:none}
-  .faq details[open] .a{animation:none}
-  .faq summary::before, .faq details[open] summary::before{transition:none; transform:none}
+  .faq .a{transition:none}
+  .faq .q::before{transition:none}
   .mnav, .mnav-scrim{transition:none}
   .mnav{transform:none}
 }
@@ -254,16 +254,15 @@ section{scroll-margin-top:64px}
 
 /* FAQ */
 .faq{display:grid; gap:10px}
-.faq details{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:0 18px; box-shadow:var(--shadow)}
-.faq summary{cursor:pointer; font-weight:800; padding:15px 0; list-style:none; display:flex; gap:10px; font-size:14px}
-.faq summary::before{content:"Q"; color:#fff; background:var(--sky); border-radius:50%; width:24px; height:24px; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; font-size:13px; font-weight:900}
-.faq summary::-webkit-details-marker{display:none}
-.faq .a{padding:0 0 16px 34px; color:var(--muted); font-size:13px}
-/* 開いたとき回答がふわっと出る（reduced-motion時は無効・CSS下部のメディアクエリで） */
-.faq details[open] .a{animation:faqOpen .3s ease}
-.faq summary::before{transition:transform .25s ease, background .2s ease}
-.faq details[open] summary::before{transform:rotate(360deg); background:var(--navy)}
-@keyframes faqOpen{from{opacity:0; transform:translateY(-8px)} to{opacity:1; transform:none}}
+.faq .qa{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:0 18px; box-shadow:var(--shadow)}
+.faq .q{cursor:pointer; font-weight:800; padding:15px 0; display:flex; gap:10px; align-items:center; font-size:14px; width:100%; text-align:left; background:none; border:none; font-family:inherit; color:inherit}
+.faq .q::before{content:"Q"; color:#fff; background:var(--sky); border-radius:50%; width:24px; height:24px; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; font-size:13px; font-weight:900; transition:transform .3s ease, background .25s ease}
+.faq .qa.open .q::before{transform:rotate(360deg); background:var(--navy)}
+/* 回答: 高さ0fr↔1fr をトランジションして、枠の伸縮＝下のコンテンツの移動をなめらかに */
+.faq .a{display:grid; grid-template-rows:0fr; transition:grid-template-rows .32s ease}
+.faq .qa.open .a{grid-template-rows:1fr}
+.faq .a-in{overflow:hidden; color:var(--muted); font-size:13px}
+.faq .qa.open .a-in{padding:0 0 16px 34px}
 
 /* フォーム */
 .form{display:grid; gap:14px; background:var(--card); border:1px solid var(--line); border-radius:22px; padding:30px 24px; box-shadow:var(--shadow)}
@@ -611,13 +610,13 @@ footer .logo span{color:var(--accent)}
     <h2>よくあるご質問</h2>
     <p class="lead">そのほかのご質問もお気軽にどうぞ。</p>
     <div class="faq">
-      <details><summary>相談だけでも大丈夫ですか？</summary><div class="a">もちろんです。ご相談・お見積りは無料。「まだ迷っている」段階でも大歓迎です。</div></details>
-      <details><summary>パソコンが苦手でも大丈夫？</summary><div class="a">大丈夫です。制作も公開後の更新もすべてこちらで行うので、難しい操作は一切ありません。</div></details>
-      <details><summary>写真や文章を用意できていません…</summary><div class="a">お手持ちの写真や資料をもとに、載せる内容から一緒に考えてご提案します。まずはご相談ください。</div></details>
-      <details><summary>ページ数はどれくらい必要？</summary><div class="a">多くのお店は6ページ以内（トップ・メニュー・アクセスなど）に収まります。足りなければ上限なしのEasyWebHP＋をどうぞ。</div></details>
-      <details><summary>どれくらいで公開できますか？</summary><div class="a">内容やページ数によって異なります。ヒアリングの際に目安をお伝えします。</div></details>
-      <details><summary>あとからプラン変更はできますか？</summary><div class="a">可能です。お店の成長に合わせてページ追加やSNS運用などを足していけます。</div></details>
-      <details><summary>契約期間や解約の条件は？</summary><div class="a">ご契約条件は無料相談の際に丁寧にご説明します。ご納得いただいてからのスタートなのでご安心ください。</div></details>
+      <div class="qa"><button class="q" type="button" aria-expanded="false">相談だけでも大丈夫ですか？</button><div class="a"><div class="a-in">もちろんです。ご相談・お見積りは無料。「まだ迷っている」段階でも大歓迎です。</div></div></div>
+      <div class="qa"><button class="q" type="button" aria-expanded="false">パソコンが苦手でも大丈夫？</button><div class="a"><div class="a-in">大丈夫です。制作も公開後の更新もすべてこちらで行うので、難しい操作は一切ありません。</div></div></div>
+      <div class="qa"><button class="q" type="button" aria-expanded="false">写真や文章を用意できていません…</button><div class="a"><div class="a-in">お手持ちの写真や資料をもとに、載せる内容から一緒に考えてご提案します。まずはご相談ください。</div></div></div>
+      <div class="qa"><button class="q" type="button" aria-expanded="false">ページ数はどれくらい必要？</button><div class="a"><div class="a-in">多くのお店は6ページ以内（トップ・メニュー・アクセスなど）に収まります。足りなければ上限なしのEasyWebHP＋をどうぞ。</div></div></div>
+      <div class="qa"><button class="q" type="button" aria-expanded="false">どれくらいで公開できますか？</button><div class="a"><div class="a-in">内容やページ数によって異なります。ヒアリングの際に目安をお伝えします。</div></div></div>
+      <div class="qa"><button class="q" type="button" aria-expanded="false">あとからプラン変更はできますか？</button><div class="a"><div class="a-in">可能です。お店の成長に合わせてページ追加やSNS運用などを足していけます。</div></div></div>
+      <div class="qa"><button class="q" type="button" aria-expanded="false">契約期間や解約の条件は？</button><div class="a"><div class="a-in">ご契約条件は無料相談の際に丁寧にご説明します。ご納得いただいてからのスタートなのでご安心ください。</div></div></div>
     </div>
   </div>
 </section>
@@ -682,14 +681,18 @@ footer .logo span{color:var(--accent)}
     a.addEventListener('click', function () { setOpen(false); });
   });
 })();
-// FAQ: PC（マウス端末）はホバーで開閉。スマホ等タッチ端末は従来どおりタップ開閉。
+// FAQ: PC（マウス端末）はホバーで開閉、スマホ等タッチ端末はタップで開閉。
+// 高さは grid-template-rows のトランジションでなめらかに伸縮する（CSS側）。
 (function () {
-  if (!window.matchMedia || !matchMedia('(hover:hover)').matches) return;  // タッチ端末はそのまま
-  document.querySelectorAll('.faq details').forEach(function (d) {
-    d.addEventListener('mouseenter', function () { d.open = true; });
-    d.addEventListener('mouseleave', function () { d.open = false; });
-    var s = d.querySelector('summary');
-    if (s) s.addEventListener('click', function (e) { e.preventDefault(); });  // ホバー主導、クリック競合を防ぐ
+  var hoverable = window.matchMedia && matchMedia('(hover:hover)').matches;
+  document.querySelectorAll('.faq .qa').forEach(function (qa) {
+    var q = qa.querySelector('.q');
+    function set(open) { qa.classList.toggle('open', open); q.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+    if (hoverable) {
+      qa.addEventListener('mouseenter', function () { set(true); });
+      qa.addEventListener('mouseleave', function () { set(false); });
+    }
+    q.addEventListener('click', function () { set(!qa.classList.contains('open')); });
   });
 })();
 // スクロールでふわっと表示（reduced-motionはCSS側で無効化済み）
