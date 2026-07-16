@@ -257,7 +257,7 @@ section{scroll-margin-top:64px}
 .faq .qa{background:var(--card); border:1px solid var(--line); border-radius:16px; padding:0 18px; box-shadow:var(--shadow)}
 .faq .q{cursor:pointer; font-weight:800; padding:15px 0; display:flex; gap:10px; align-items:center; font-size:14px; width:100%; text-align:left; background:none; border:none; font-family:inherit; color:inherit}
 .faq .q::before{content:"Q"; color:#fff; background:var(--sky); border-radius:50%; width:24px; height:24px; flex:0 0 auto; display:inline-flex; align-items:center; justify-content:center; font-size:13px; font-weight:900; transition:transform .3s ease, background .25s ease}
-.faq .qa.open .q::before{transform:rotate(360deg); background:var(--navy)}
+.faq .qa.open .q::before{content:"A"; transform:rotate(360deg); background:var(--navy)}
 /* 回答: 高さ0fr↔1fr をトランジションして、枠の伸縮＝下のコンテンツの移動をなめらかに */
 .faq .a{display:grid; grid-template-rows:0fr; transition:grid-template-rows .32s ease}
 .faq .qa.open .a{grid-template-rows:1fr}
