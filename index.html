@@ -271,9 +271,8 @@ section{scroll-margin-top:64px}
 .form input:focus-visible,.form textarea:focus-visible{outline:3px solid var(--sky); outline-offset:1px}
 .form-sent{margin:8px 0; text-align:center; font-weight:800; color:var(--navy); font-size:15px}
 .form-err{margin:0; text-align:center; color:var(--danger); font-size:13px; font-weight:700}
-.alt-contact{display:grid; gap:12px; margin-top:26px; text-align:center}
-.alt-contact a{color:var(--navy); font-weight:900; text-decoration:none; font-size:18px}
-.alt-contact .cap{color:var(--muted); font-size:12px}
+.form-privacy{margin:0; text-align:center; color:var(--muted); font-size:12px}
+.form-privacy a{color:var(--sky)}
 
 /* 追従CTA */
 .cta-bar{position:fixed; left:0; right:0; bottom:0; backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); background:rgba(255,255,255,.86); border-top:1px solid var(--line); padding:10px 14px calc(10px + env(safe-area-inset-bottom)); display:flex; gap:10px; z-index:50; box-shadow:0 -6px 20px rgba(13,58,125,.12)}
@@ -282,6 +281,9 @@ section{scroll-margin-top:64px}
 footer{background:var(--navy-deep); color:#9fb4d6; padding:42px 0 52px; text-align:center; font-size:12px}
 footer .logo{font-weight:800; color:#fff; font-size:17px; margin-bottom:6px}
 footer .logo span{color:var(--accent)}
+footer .flinks{margin-top:14px}
+footer .flinks a{color:#cfe0f5; text-decoration:none}
+footer .flinks a:hover{color:#fff; text-decoration:underline}
 
 /* ============ PC / タブレット向け（営業ツール用のワイドレイアウト） ============ */
 @media (min-width: 960px){
@@ -642,12 +644,10 @@ footer .logo span{color:var(--accent)}
       <label>ご相談内容（任意）
         <textarea name="body" rows="4" placeholder="例：お店のホームページを作りたい。料金の詳細を知りたい。"></textarea>
       </label>
+      <p class="form-privacy">送信いただいた内容は<a href="privacy.html" target="_blank" rel="noopener">プライバシーポリシー</a>に基づいて取り扱います。</p>
       <button class="btn btn-cta btn-block" type="submit">この内容で無料相談する</button>
-      <p class="form-err" id="form-err" hidden>送信できませんでした。お手数ですが、時間をおいて再度お試しいただくか、メールでご連絡ください。</p>
+      <p class="form-err" id="form-err" hidden>送信できませんでした。お手数ですが、時間をおいて再度お試しください。</p>
     </form>
-    <div class="alt-contact">
-      <div><a href="mailto:info@example.com">✉️ info@example.com</a><div class="cap">メールでのご相談</div></div>
-    </div>
   </div>
 </section>
 
@@ -656,6 +656,7 @@ footer .logo span{color:var(--accent)}
   <div>ホームページ制作・運用・保守サービス</div>
   <div>運営：株式会社TAC</div>
   <div>愛知県名古屋市守山区瀬古東1-1701 201</div>
+  <div class="flinks"><a href="privacy.html">プライバシーポリシー</a>｜<a href="tokushoho.html">特定商取引法に基づく表記</a></div>
 </footer>
 
 <!-- 追従CTAバー -->
