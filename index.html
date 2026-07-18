@@ -66,6 +66,7 @@ h2{font-size:25px; font-weight:900; text-align:center; color:var(--navy); margin
   .faq .q::before{transition:none}
   .mnav, .mnav-scrim{transition:none}
   .mnav{transform:none}
+  .work, .work .prev img, .work .prev::before, .work .prev::after{transition:none}
 }
 
 /* ガラス風固定ヘッダー */
@@ -179,12 +180,24 @@ section{scroll-margin-top:64px}
 /* 制作サンプル（ライブプレビュー: 実サイトを縮小表示） */
 .works{display:grid; gap:18px}
 @media(min-width:640px){ .works{grid-template-columns:repeat(3,1fr)} }
-.work{background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column}
-.work .win{background:#e9eef5; padding:9px 12px; display:flex; gap:5px}
-.work .win i{width:8px; height:8px; border-radius:50%; background:#c6d2e2; display:block}
+.work{background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); display:flex; flex-direction:column; transition:transform .25s ease, box-shadow .25s ease}
+@media (hover:hover){ .work:hover{transform:translateY(-4px); box-shadow:0 16px 36px rgba(13,42,90,.16)} }
+.work .win{background:#e9eef5; padding:8px 12px; display:flex; gap:5px; align-items:center}
+.work .win i{width:9px; height:9px; border-radius:50%; display:block; flex:0 0 auto}
+.work .win i:nth-child(1){background:#f57f71}
+.work .win i:nth-child(2){background:#f5bf4f}
+.work .win i:nth-child(3){background:#5fc454}
+.work .win .url{flex:1; min-width:0; margin-left:6px; background:#fff; border:1px solid var(--line); border-radius:999px; font-size:10px; color:var(--muted); padding:3px 10px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis}
 .work .prev{position:relative; display:block; height:240px; overflow:hidden; background:#fff}
 .work .prev img{width:100%; height:100%; object-fit:cover; object-position:top center; display:block; transition:transform .3s ease}
-@media (hover:hover){ .work .prev:hover img{transform:scale(1.04)} }
+/* ホバー時: 画像がわずかにズーム＋暗くなり「実際のサイトを見る」ピルが浮かぶ */
+.work .prev::before{content:""; position:absolute; inset:0; background:rgba(8,28,63,.28); opacity:0; transition:opacity .25s ease; pointer-events:none}
+.work .prev::after{content:"実際のサイトを見る ↗"; position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.94); background:rgba(255,255,255,.95); color:var(--navy); font-weight:800; font-size:13px; padding:9px 18px; border-radius:999px; box-shadow:0 6px 18px rgba(8,28,63,.25); opacity:0; transition:opacity .25s ease, transform .25s ease; pointer-events:none; white-space:nowrap}
+@media (hover:hover){
+  .work .prev:hover img{transform:scale(1.05)}
+  .work .prev:hover::before{opacity:1}
+  .work .prev:hover::after{opacity:1; transform:translate(-50%,-50%) scale(1)}
+}
 .work .wb{padding:14px 16px 18px; display:grid; gap:6px; justify-items:start}
 .work .wtag{background:var(--wash); color:var(--navy); font-size:11px; font-weight:800; border-radius:999px; padding:3px 12px}
 .work .wname{font-weight:900; font-size:15px; color:var(--navy)}
@@ -451,7 +464,7 @@ footer .flinks a:hover{color:#fff; text-decoration:underline}
     <p class="lead">下のプレビューは、すべて実際に動くサンプルサイトです。品質をその目でお確かめください。</p>
     <div class="works">
       <div class="work">
-        <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="win" aria-hidden="true"><i></i><i></i><i></i><span class="url">🔒 k-matsumoto527.github.io/salon-sample</span></div>
         <a class="prev" href="https://k-matsumoto527.github.io/salon-sample/salon-sample.html" target="_blank" rel="noopener" aria-label="美容室のサンプルサイトを新しいタブで見る">
           <img src="img/salon.jpg" alt="美容室サイト hair salon TASHI の制作イメージ" width="2214" height="1323" loading="lazy">
         </a>
@@ -462,7 +475,7 @@ footer .flinks a:hover{color:#fff; text-decoration:underline}
         </div>
       </div>
       <div class="work">
-        <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="win" aria-hidden="true"><i></i><i></i><i></i><span class="url">🔒 k-matsumoto527.github.io/my-website</span></div>
         <a class="prev" href="https://k-matsumoto527.github.io/my-website/" target="_blank" rel="noopener" aria-label="ダイニングのサンプルサイトを新しいタブで見る">
           <img src="img/dining.jpg" alt="飲食店サイト Dining TASHIRO の制作イメージ" width="2209" height="1314" loading="lazy">
         </a>
@@ -473,7 +486,7 @@ footer .flinks a:hover{color:#fff; text-decoration:underline}
         </div>
       </div>
       <div class="work">
-        <div class="win" aria-hidden="true"><i></i><i></i><i></i></div>
+        <div class="win" aria-hidden="true"><i></i><i></i><i></i><span class="url">🔒 k-matsumoto527.github.io/kids-support-sample</span></div>
         <a class="prev" href="https://k-matsumoto527.github.io/kids-support-sample/" target="_blank" rel="noopener" aria-label="こども支援施設のサンプルサイトを新しいタブで見る">
           <img src="img/kids.jpg" alt="こども支援施設サイト 〇〇KIDS の制作イメージ" width="2167" height="1060" loading="lazy">
         </a>
