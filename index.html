@@ -23,6 +23,8 @@
      media="print"→onloadでallに切替える手法で、外部フォントCSSの取得を待たずに
      即座にシステム書体で描画→カクつき防止。display=optionalで読み込み後の
      ちらつき（差し替えによるレイアウト再計算）も抑制。JS無効時はnoscriptで従来通り読み込み） -->
+<!-- ヒーロー背景写真の先読み（CSS解析を待たず最優先でダウンロード開始させLCPを短縮） -->
+<link rel="preload" as="image" href="top.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=optional">
@@ -114,7 +116,7 @@ section{scroll-margin-top:64px}
     radial-gradient(70% 65% at 50% 44%, rgba(6,20,46,.55) 0%, rgba(6,20,46,.20) 55%, transparent 78%),
     radial-gradient(70% 45% at 10% 100%, rgba(255,198,26,.10) 0%, transparent 55%),
     linear-gradient(165deg, rgba(6,22,50,.72) 0%, rgba(9,34,74,.55) 55%, rgba(11,45,98,.70) 100%),
-    url('top.jpg') center / cover no-repeat,
+    url('top.webp') center / cover no-repeat,
     linear-gradient(165deg, var(--navy-deep) 0%, #0c2f66 55%, var(--navy) 100%);
   color:var(--hero-text); text-align:center; padding:104px 0 64px; overflow:hidden;
 }
